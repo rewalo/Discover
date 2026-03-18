@@ -507,25 +507,25 @@ class MainSettingsWindow():
             "main", "fg_hi_col", fallback="[1.0,1.0,1.0,1.0]")))
 
         self.widget['voice_talking_background'].set_rgba(self.make_colour(config.get(
-            "main", "hi_col", fallback="[0.0,0.0,0.0,0.5]")))
+            "main", "hi_col", fallback="[0.153,0.153,0.165,1.0]")))
 
         self.widget['voice_talking_border'].set_rgba(self.make_colour(config.get(
-            "main", "tk_col", fallback="[0.0,0.7,0.0,1.0]")))
+            "main", "tk_col", fallback="[0.13, 0.77, 0.37, 1.0]")))
 
         self.widget['voice_idle_foreground'].set_rgba(self.make_colour(config.get(
-            "main", "fg_col", fallback="[1.0,1.0,1.0,1.0]")))
+            "main", "fg_col", fallback="[0.63,0.63,0.67,1.0]")))
 
         self.widget['voice_idle_background'].set_rgba(self.make_colour(config.get(
-            "main", "bg_col", fallback="[0.0,0.0,0.0,0.5]")))
+            "main", "bg_col", fallback="[0.153,0.153,0.165,1.0]")))
 
         self.widget['voice_idle_border'].set_rgba(self.make_colour(config.get(
-            "main", "bo_col", fallback="[0.0,0.0,0.0,0.0]")))
+            "main", "bo_col", fallback="[0.63,0.63,0.67,1.0]")))
 
         self.widget['voice_mute_foreground'].set_rgba(self.make_colour(config.get(
             "main", "mt_col", fallback="[0.6,0.0,0.0,1.0]")))
 
         self.widget['voice_mute_background'].set_rgba(self.make_colour(config.get(
-            "main", "mt_bg_col", fallback="[0.0,0.0,0.0,0.5]")))
+            "main", "mt_bg_col", fallback="[0.0,0.0,0.0,0.8]")))
 
         self.widget['voice_avatar_background'].set_rgba(self.make_colour(config.get(
             "main", "avatar_bg_col", fallback="[0.0,0.0,0.0,0.0]")))
@@ -544,7 +544,12 @@ class MainSettingsWindow():
         self.voice_show_name_hide_others(show_name)
 
         self.widget['voice_square_avatar'].set_active(config.getboolean(
-            "main", "square_avatar", fallback=True))
+            "main", "square_avatar", fallback=False))
+            
+        self.widget['voice_rounded_names'].set_active(config.getboolean(
+            "main", "rounded_names", fallback=True))
+        self.widget['voice_separate_names'].set_active(config.getboolean(
+            "main", "separate_names", fallback=False))
 
         self.widget['voice_fancy_avatar_shapes'].set_active(
             config.getboolean("main", "fancy_border", fallback=True))
@@ -1126,7 +1131,19 @@ class MainSettingsWindow():
         self.voice_show_name_hide_others(button.get_active())
 
     def voice_square_avatar_changed(self, button):
-        self.config_set("main", "square_avatar", f"{button.get_active()}")
+        """Update active setting for config option"""
+        update = button.get_active()
+        self.config_set("main", "square_avatar", f"{update}")
+
+    def voice_rounded_names_changed(self, button):
+        """Update active setting for config option"""
+        update = button.get_active()
+        self.config_set("main", "rounded_names", f"{update}")
+
+    def voice_separate_names_changed(self, button):
+        """Update active setting for config option"""
+        update = button.get_active()
+        self.config_set("main", "separate_names", f"{update}")
 
     def voice_fancy_avatar_shapes_changed(self, button):
         self.config_set("main", "fancy_border", f"{button.get_active()}")
@@ -1163,12 +1180,16 @@ class MainSettingsWindow():
             self.widget['voice_text_padding'].set_sensitive(True)
             self.widget['voice_text_vertical_offset'].set_sensitive(True)
             self.widget['voice_nick_length'].set_sensitive(True)
+            self.widget['voice_rounded_names'].set_sensitive(True)
+            self.widget['voice_separate_names'].set_sensitive(True)
         else:
             # Hide name options
             self.widget['voice_font'].set_sensitive(False)
             self.widget['voice_text_padding'].set_sensitive(False)
             self.widget['voice_text_vertical_offset'].set_sensitive(False)
             self.widget['voice_nick_length'].set_sensitive(False)
+            self.widget['voice_rounded_names'].set_sensitive(False)
+            self.widget['voice_separate_names'].set_sensitive(False)
 
     def voice_show_avatar_hide_others(self, val):
         if val:

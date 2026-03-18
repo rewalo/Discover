@@ -1041,6 +1041,60 @@
             </child>
             <child>
               <object class="GtkLabel">
+                <property name="name">voice_rounded_names_label</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Rounded Names</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">6</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton">
+                <property name="name">voice_rounded_names</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="draw-indicator">True</property>
+                <signal name="toggled" handler="voice_rounded_names_changed" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">6</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="name">voice_separate_names_label</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Seperate Names</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">10</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton">
+                <property name="name">voice_separate_names</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="draw-indicator">True</property>
+                <signal name="toggled" handler="voice_separate_names_changed" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">10</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
                 <property name="name">voice_show_test_content_label</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
@@ -1276,7 +1330,7 @@
                 <property name="name">voice_avatar_opacity_label</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Avatar Opacity</property>
+                <property name="label" translatable="yes">Opacity</property>
                 <property name="xalign">0</property>
               </object>
               <packing>

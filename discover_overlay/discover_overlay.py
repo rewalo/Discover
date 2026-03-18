@@ -178,21 +178,21 @@ class Discover:
         self.voice_overlay.set_align_y(
             config.getint("main", "topalign", fallback=1))
         self.voice_overlay.set_bg(json.loads(config.get(
-            "main", "bg_col", fallback="[0.0,0.0,0.0,0.5]")))
+            "main", "bg_col", fallback="[0.153, 0.153, 0.165, 1.0]")))
         self.voice_overlay.set_fg(json.loads(config.get(
-            "main", "fg_col", fallback="[1.0,1.0,1.0,1.0]")))
+            "main", "fg_col", fallback="[0.63, 0.63, 0.67, 1.0]")))
         self.voice_overlay.set_fg_hi(json.loads(config.get(
             "main", "fg_hi_col", fallback="[1.0,1.0,1.0,1.0]")))
         self.voice_overlay.set_tk(json.loads(config.get(
-            "main", "tk_col", fallback="[0.0,0.7,0.0,1.0]")))
+            "main", "tk_col", fallback="[0.13, 0.77, 0.37, 1.0]")))
         self.voice_overlay.set_mt(json.loads(config.get(
             "main", "mt_col", fallback="[0.6,0.0,0.0,1.0]")))
         self.voice_overlay.set_mute_bg(json.loads(config.get(
-            "main", "mt_bg_col", fallback="[0.0,0.0,0.0,0.5]")))
+            "main", "mt_bg_col", fallback="[0.0, 0.0, 0.0, 0.8]")))
         self.voice_overlay.set_hi(json.loads(config.get(
-            "main", "hi_col", fallback="[0.0,0.0,0.0,0.5]")))
+            "main", "hi_col", fallback="[0.153, 0.153, 0.165, 1.0]")))
         self.voice_overlay.set_bo(json.loads(config.get(
-            "main", "bo_col", fallback="[0.0,0.0,0.0,0.0]")))
+            "main", "bo_col", fallback="[0.63, 0.63, 0.67, 1.0]")))
         self.voice_overlay.set_avatar_bg_col(json.loads(config.get(
             "main", "avatar_bg_col", fallback="[0.0,0.0,0.0,0.0]")))
         self.voice_overlay.set_avatar_size(
@@ -208,7 +208,11 @@ class Discover:
         font = config.get("main", "font", fallback=None)
         title_font = config.get("main", "title_font", fallback=None)
         self.voice_overlay.set_square_avatar(config.getboolean(
-            "main", "square_avatar", fallback=True))
+            "main", "square_avatar", fallback=False))
+        self.voice_overlay.set_rounded_names(config.getboolean(
+            "main", "rounded_names", fallback=True))
+        self.voice_overlay.set_separate_names(config.getboolean(
+            "main", "separate_names", fallback=False))
         self.voice_overlay.set_only_speaking(config.getboolean(
             "main", "only_speaking", fallback=False))
         self.voice_overlay.set_only_speaking_grace_period(config.getint(

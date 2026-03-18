@@ -370,6 +370,7 @@ class DiscordConnector:
         elif j["cmd"] == "AUTHENTICATE":
             if j["evt"] == "ERROR":
                 self.access_token = None
+                self.discover.config_set("cache", "access_token", "")
                 self.get_access_token_stage1()
                 return
             else:
@@ -793,7 +794,7 @@ class DiscordConnector:
         """Set a timer to attempt reconnection"""
         if self.reconnect_cb is None:
             log.info("Scheduled a reconnect")
-            self.reconnect_cb = GLib.timeout_add_seconds(60, self.connect)
+            self.reconnect_cb = GLib.timeout_add_seconds(3, self.connect)
         else:
             log.error("Reconnect already scheduled")
 
